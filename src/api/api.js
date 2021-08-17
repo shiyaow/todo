@@ -5,10 +5,9 @@ const TABLE = 'Todo%20list';
 const AUTH_HEADER = {
 	Authorization: `Bearer keyjlaxCiAV9Pq0If`,
 };
+const url = `${baseUrl}${BASE}/${TABLE}`;
 
 export const fetchTodos = (setTodos) => {
-	const url = `${baseUrl}${BASE}/${TABLE}`;
-
 	fetch(url, {
 		headers: {
 			...AUTH_HEADER,
@@ -21,16 +20,16 @@ export const fetchTodos = (setTodos) => {
 };
 
 export const removeTodo = async (id) => {
-	await fetch(`${baseUrl}/${id}`, {
+	await fetch(`${url}/${id}`, {
 		method: 'DELETE',
 		headers: {
 			...AUTH_HEADER,
 		},
-	}).then((res) => res.JSON());
+	}).then((res) => res.json());
 };
 
 export const addTodo = async (input) => {
-	await fetch(`${baseUrl}`, {
+	await fetch(`${url}`, {
 		method: 'POST',
 		headers: {
 			...AUTH_HEADER,
@@ -41,7 +40,7 @@ export const addTodo = async (input) => {
 };
 
 export const setDone = (id) => {
-	fetch(`${baseUrl}`, {
+	fetch(`${url}`, {
 		method: 'PATCH',
 		headers: {
 			...AUTH_HEADER,

@@ -29,21 +29,18 @@ const TodoList = () => {
 	return (
 		<Suspense fallback='loading......'>
 			<div className='app'>
-				<button onClick={() => setTestArr((x) => (x += 1))}>{'testtest'}</button>
 				<div className='todo-list'>
 					{todos.length ? (
 						todos.map(
 							(todo, index) =>
 								todo.fields.Todo && (
-									<Suspense fallback='loading...'>
-										<TodoItem
-											key={index}
-											index={index}
-											todoObj={todo}
-											completeTodo={completeTodo}
-											deleteTodo={deleteTodo}
-										/>
-									</Suspense>
+									<TodoItem
+										key={index}
+										index={index}
+										todoObj={todo}
+										completeTodo={completeTodo}
+										deleteTodo={deleteTodo}
+									/>
 								),
 						)
 					) : (
